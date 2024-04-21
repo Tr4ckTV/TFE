@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Avis;
 
 class HomeController extends Controller
 {
@@ -20,18 +22,37 @@ class HomeController extends Controller
 
     public function promotions()
     {
-        // Logique pour la page Promotions
+        $promotedProducts = Product::where('is_promotion', true)->get();
+        return view('promotions', ['promotedProducts' => $promotedProducts]);
     }
 
-    public function produits()
-    {
-        $products = Product::all();
-        return view('produits', compact('products'));
+    public function produits(Request $request)
+{
+    // Récupérer tous les produits
+    $query = Product::query();
+
+    // Filtrer par catégorie si une catégorie est sélectionnée
+    if ($request->has('category')) {
+        $categoryId = $request->input('category');
+        $query->whereHas('categories', function ($query) use ($categoryId) {
+            $query->where('categories.id', $categoryId); // Spécifiez la table 'categories'
+        });
     }
+
+    // Récupérer les produits filtrés
+    $products = $query->get();
+
+    // Récupérer toutes les catégories
+    $categories = Category::all();
+
+    // Passer les produits et les catégories à la vue
+    return view('produits', compact('products', 'categories'));
+}
 
     public function avis()
     {
-        // Logique pour la page Avis
+        $avis = Avis::with('user')->get();
+        return view('avis', compact('avis'));
     }
 
     public function profil()

@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AvisController;
 
 
 /*
@@ -41,7 +42,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::get('/nouveautes', [HomeController::class, 'nouveautes'])->name('nouveautes');
 Route::get('/promotions', [HomeController::class, 'promotions'])->name('promotions');
 Route::get('/produits', [HomeController::class, 'produits'])->name('produits');
+Route::get('/products', [ProductController::class, 'indexForCustomers'])->name('products.index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
 Route::get('/avis', [HomeController::class, 'avis'])->name('avis');
+Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
+Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
+
 
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil')->middleware('auth');
 
