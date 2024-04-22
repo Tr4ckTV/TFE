@@ -28,10 +28,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::get('/create', [UserController::class, 'create'])->name('users.create');
 
 Route::get('/membres', [UserController::class, 'membres'])->name('users.membres');
 
@@ -48,7 +47,6 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('/avis', [HomeController::class, 'avis'])->name('avis');
 Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
 Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
-
 
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil')->middleware('auth');
 

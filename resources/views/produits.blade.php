@@ -50,6 +50,17 @@
         right: 10px;
     }
 
+    .product .special-badge1 {
+        background-color: #ff8800; /* Couleur de l'étiquette spéciale */
+        color: #fff;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        position: relative;
+        top: 10px;
+        right: 10px;
+    }
+
 </style>
 
 @section('content')
@@ -75,18 +86,20 @@
         <!-- Liste des produits -->
         <div class="product-list">
             @foreach ($products as $product)
-                <a href="{{ route('products.show', $product->id) }}" class="product"> <!-- Ajout du lien vers la page show du produit -->
-                    <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                    <div class="details">
-                        <span class="title">{{ $product->name }}</span>
-                        <p class="description">{{ $product->description }}</p>
-                        <p class="price">{{ $product->price }} €</p>
-                        @if ($product->is_promotion)
-                            <span class="special-badge">En promo</span>
-                        @endif
-                    </div>
-                </a>
-            @endforeach
+    <a href="{{ route('products.show', $product->id) }}" class="product"> <!-- Ajout du lien vers la page show du produit -->
+        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+        <div class="details">
+            <span class="title">{{ $product->name }}</span>
+            <p class="description">{{ $product->description }}</p>
+            <p class="price">{{ $product->price }} €</p>
+            @if ($product->quantity == 0)
+                <span class="special-badge1">Épuisé</span>
+            @elseif ($product->is_promotion)
+                <span class="special-badge">En promo</span>
+            @endif
+        </div>
+    </a>
+@endforeach
         </div>
     </div>
 @endsection

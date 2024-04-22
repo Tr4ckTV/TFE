@@ -42,6 +42,7 @@ main a:hover {
         <p>Nom d'utilisateur: {{ Auth::user()->name }}</p>
         <p>Email: {{ Auth::user()->email }}</p>
         <a href="{{ route('logout') }}">Déconnexion</a>
+        <a href="{{ route('users.edit', Auth::user()) }}" class="btn btn-primary">Modifier mon profil</a>
 
         @if(Auth::user()->type_membre_id == 1) <!-- Vérifie si l'utilisateur est administrateur -->
             <!-- Affiche des liens vers les sections administratives -->
@@ -49,6 +50,9 @@ main a:hover {
             <p><a href="{{ route('products.index') }}">Gestion des produits</a></p>
             <!-- Ajoutez d'autres liens vers les sections administratives au besoin -->
         @endif
+
+
+
 
     @endif
 </main>

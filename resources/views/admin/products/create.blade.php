@@ -48,7 +48,7 @@
 
             <div class="form-group">
                 <label for="quantity">Quantité:</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required>
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
             </div>
 
             <!-- Affichage du prix réduit -->
@@ -70,7 +70,7 @@
             if (this.checked) {
                 discountFields.style.display = 'block';
                 discountedPriceField.style.display = 'block';
-                calculateDiscountedPrice(); // Appelons la fonction de calcul lorsque la promotion est activée
+                calculateDiscountedPrice();
             } else {
                 discountFields.style.display = 'none';
                 discountedPriceField.style.display = 'none';

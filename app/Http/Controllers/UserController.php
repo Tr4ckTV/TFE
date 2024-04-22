@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\TypeMembre;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -54,26 +55,37 @@ public function store(Request $request)
     $typesMembre = TypeMembre::pluck('nom', 'id');
 
     // Passer les types de membres à la vue
-    return view('users.edit', compact('user', 'typesMembre'));
+    $user = auth()->user();
+    return view('users.edit', compact('user'));
 }
 
 
 public function update(Request $request, User $user)
 {
-    // Valider les données du formulaire
-    $validatedData = $request->validate([
+    $request->validate([
         'name' => 'required|string|max:255',
-        'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)], // Ajout de la validation pour l'email
-        'password' => 'nullable|string|min:8',
-        'type_membre_id' => 'required|integer',
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'password' => 'nullable|string|min:8|confirmed',
     ]);
 
-    // Mettre à jour les informations de l'utilisateur avec les données validées
-    $user->update($validatedData);
+    try {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
 
-    // Rediriger vers la page de détails de l'utilisateur mis à jour
-    return redirect()->route('users.membres');
+        $user->save();
+
+        return redirect()->route('profil', ['user' => $user->id])->with('success', 'Profil mis à jour avec succès.');
+    } catch (\Exception $e) {
+        return redirect()->route('profil', ['user' => $user->id])->with('error', 'Une erreur est survenue lors de la mise à jour du profil.');
+    }
 }
+
+
+
+
 
     public function destroy(User $user)
 {
