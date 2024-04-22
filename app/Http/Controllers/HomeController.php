@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Avis;
+use App\Models\Panier;
 
 class HomeController extends Controller
 {
@@ -69,7 +70,8 @@ class HomeController extends Controller
 
     public function panier()
     {
-        // Logique pour la page Panier
+        $cartItems = Panier::all();
+        return view('panier', compact('cartItems'));
     }
 
 }

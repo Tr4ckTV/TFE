@@ -48,6 +48,7 @@ main a:hover {
             <!-- Affiche des liens vers les sections administratives -->
             <p><a href="{{ route('admin.dashboard') }}">Tableau de bord administrateur</a></p>
             <p><a href="{{ route('products.index') }}">Gestion des produits</a></p>
+            <p><a href="{{ route('admin.commandes') }}">Commandes</a></p>
             <!-- Ajoutez d'autres liens vers les sections administratives au besoin -->
         @endif
 

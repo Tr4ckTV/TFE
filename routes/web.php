@@ -10,6 +10,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AvisController;
+use App\Http\Controllers\PanierController;
+use App\Http\Controllers\CommandeController;
 
 
 /*
@@ -74,4 +76,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/admin/commandes', [AdminDashboardController::class, 'commandeIndex'])->name('admin.commandes');
+    Route::post('/admin/commandes/{commande}/validate', [CommandeController::class, 'approve'])->name('commandes.validate');
+    Route::post('/admin/commandes/{commande}/reject', [CommandeController::class, 'refuse'])->name('commandes.reject');
 });
+
+Route::post('/panier/{productId}/add', [PanierController::class, 'addProductToPanier'])->name('panier.add');
+Route::put('/panier/{id}', [PanierController::class, 'update'])->name('panier.update');
+Route::delete('/panier/{id}', [PanierController::class, 'remove'])->name('panier.remove');
+
+Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes');
+Route::post('/commandes', [CommandeController::class, 'store'])->name('commandes.store');
+Route::get('/commandes/{commande}', [CommandeController::class, 'show'])->name('commandes.show');
+

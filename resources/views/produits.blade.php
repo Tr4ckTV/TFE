@@ -97,6 +97,11 @@
             @elseif ($product->is_promotion)
                 <span class="special-badge">En promo</span>
             @endif
+            <form action="{{ route('panier.add', $product->id) }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+            </form>
+
         </div>
     </a>
 @endforeach
