@@ -36,4 +36,7 @@
             </table>
         @endif
     </div>
+    <div class="pagination">
+        {{ $products->links() }}
+    </div>
 @endsection

@@ -12,7 +12,7 @@ class ProductController extends Controller
     // Afficher la liste des produits
     public function index()
     {
-        $products = Product::paginate(30);
+        $products = Product::paginate(20);
         $categories = Category::all();
         return view('admin.products.index', compact('products', 'categories'));
     }

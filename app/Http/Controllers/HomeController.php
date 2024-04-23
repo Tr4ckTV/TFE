@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Avis;
 use App\Models\Panier;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -18,7 +20,13 @@ class HomeController extends Controller
 
     public function nouveautes()
     {
-        // Logique pour la page Nouveautés
+        // Récupérer la date du premier jour du mois actuel
+    $startDate = Carbon::now()->startOfMonth();
+
+    // Récupérer les produits mis en ligne ce mois-ci
+    $newProducts = Product::where('created_at', '>=', $startDate)->get();
+
+    return view('nouveautes', compact('newProducts'));
     }
 
     public function promotions()
@@ -40,8 +48,8 @@ class HomeController extends Controller
         });
     }
 
-    // Récupérer les produits filtrés
-    $products = $query->get();
+    // Récupérer les produits filtrés avec pagination
+    $products = $query->paginate(12); // Nombre de produits par page
 
     // Récupérer toutes les catégories
     $categories = Category::all();
@@ -49,6 +57,7 @@ class HomeController extends Controller
     // Passer les produits et les catégories à la vue
     return view('produits', compact('products', 'categories'));
 }
+
 
     public function avis()
     {
@@ -73,5 +82,19 @@ class HomeController extends Controller
         $cartItems = Panier::all();
         return view('panier', compact('cartItems'));
     }
+
+    public function recherche(Request $request)
+{
+    $keywords = $request->input('keywords');
+
+    // Recherchez les produits qui correspondent aux mots-clés
+    $products = Product::where('name', 'like', '%' . $keywords . '%')
+                        ->orWhere('description', 'like', '%' . $keywords . '%')
+                        ->get();
+
+    // Retournez la vue des résultats de la recherche avec les produits trouvés
+    return view('recherche', compact('keywords', 'products'));
+}
+
 
 }

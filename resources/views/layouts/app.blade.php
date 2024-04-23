@@ -303,6 +303,36 @@
             color: #000;
         }
     </style>
+
+            <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            const theme = isDarkMode ? 'jour' : 'nuit';
+            document.getElementById('toggle-theme').innerHTML = `
+                <span class="material-symbols-outlined ${isDarkMode ? 'day' : 'night'}">${isDarkMode ? 'sunny' : 'brightness_2'}</span>
+                `;
+
+            // Changer le logo en fonction du thème
+            const logo = document.querySelector('header img');
+            if (isDarkMode) {
+                logo.src = "{{ asset('image/logob.png') }}";
+            } else {
+                logo.src = "{{ asset('image/logo.png') }}";
+            }
+
+            localStorage.setItem('theme', theme);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'nuit') {
+                toggleTheme();
+            }
+            document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
+        });
+    </script>
 </head>
 <body class="dark-mode">
 
@@ -315,9 +345,10 @@
 
         <!-- Barre de recherche -->
         <form action="{{ route('recherche') }}" method="GET">
-            <input type="text" name="q" placeholder="Rechercher...">
+            <input type="text" name="keywords" placeholder="Rechercher...">
             <button type="submit" class="seach"><span class="material-symbols-outlined recherche">search</span></button>
         </form>
+
 
         <!-- Boutons profil et panier -->
         <div class="icones">
@@ -348,36 +379,6 @@
         <p>&copy; 2024 Les bijoux de la Fée Tochette. Tous droits réservés.</p>
     </footer>
 
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const isDarkMode = body.classList.contains('dark-mode');
-            const theme = isDarkMode ? 'jour' : 'nuit';
-            document.getElementById('toggle-theme').innerHTML = `
-                <span class="material-symbols-outlined ${isDarkMode ? 'day' : 'night'}">${isDarkMode ? 'sunny' : 'brightness_2'}</span>
-                `;
-
-            // Changer le logo en fonction du thème
-            const logo = document.querySelector('header img');
-            if (isDarkMode) {
-                logo.src = "{{ asset('image/logob.png') }}";
-            } else {
-                logo.src = "{{ asset('image/logo.png') }}";
-            }
-
-            localStorage.setItem('theme', theme);
-        }
-
-        window.onload = function () {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'nuit') {
-                toggleTheme();
-            }
-        };
-
-        document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
-    </script>
 
 </body>
 </html>
