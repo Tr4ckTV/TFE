@@ -83,7 +83,7 @@
 
         /* Barre entre la nav et le body */
         nav:after {
-            margin-top: 1%;
+            margin-top: 1vw;
             content: '';
             display: block;
             width: 100%;
@@ -169,7 +169,7 @@
         }
 
         div.main {
-            height: 100vh;
+            min-height: 100vh;
         }
 
         /* Footer */
@@ -180,6 +180,7 @@
             text-align: center;
             padding: 20px 0;
             position: relative;
+            z-index: -1;
         }
 
         footer:before {
@@ -215,7 +216,7 @@
             color: #505D68;
             text-decoration: none;
             margin: 0 5px;
-            font-size: 30px;
+            font-size: 40px;
         }
 
         .material-symbols-outlined:hover {
@@ -240,7 +241,7 @@
             color: #D4CBE2;
         }
 
-        .dark-mode button {
+        .dark-mode button#toggle-theme {
             background-color: #505D68;
             color: #D4CBE2;
             border: none !important;
@@ -302,6 +303,247 @@
         .dark-mode .bulle:hover:after {
             color: #000;
         }
+
+        .hamburger-menu {
+        display: none;
+        position: fixed;
+        }
+
+        /* Pour les écrans de taille moyenne comme les tablettes */
+        @media screen and (max-width: 1024px) {
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            background: #505D68;
+            overflow: hidden;
+            width: 200px;
+            transform: translateX(-200px);
+            transition: 0.7s;
+            z-index: 1001;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        nav ul li {
+            margin: 10px 0px;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #D4CBE2;
+            font-weight: bold;
+            position: relative;
+            font-size: 20px;
+            z-index: 1001;
+        }
+
+        nav ul li a:hover {
+            color: #F5EDF0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 1000%;
+            background-color: #D4CBE2;
+            z-index: -1;
+            transition: width 0.5s;
+            border-radius: 0px 0px 0px 0px;
+        }
+
+        nav ul li a:hover::after {
+            width: 1000%;
+        }
+
+        .dark-mode nav {
+            background: #D4CBE2;
+        }
+
+        .dark-mode nav ul li a {
+                color: #505D68;
+            }
+
+        .dark-mode nav ul li a:hover {
+            color: #fff;
+        }
+
+        .hamburger-menu {
+            display: block;
+            position: fixed;
+            top : 40%
+        }
+
+        #hamburger-logo {
+            cursor: pointer;
+            background: #D4CBE2;
+            width: 200px;
+            display: block;
+            color: #505D68;
+
+            text-align: right;
+
+            transform: translateX(-168px);
+            padding: 10px;
+            transition: 0.7s;
+        }
+
+        #menu-toggle:checked ~ #hamburger-logo,
+        #menu-toggle:checked ~ nav {
+        transform: translate(0);
+        }
+
+        header form button {
+            display: none;
+        }
+
+        header {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header form {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .icones {
+            margin-top: 20px;
+        }
+
+        .main {
+            padding-top: 20px;
+        }
+
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        background: #505D68;
+        overflow: hidden;
+        width: 200px;
+        transform: translateX(-200px);
+        transition: 0.7s;
+        z-index: 1001;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1001;
+    }
+
+    nav ul li {
+        margin: 10px 0px;
+        position: relative;
+        z-index: 10;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #D4CBE2;
+        font-weight: bold;
+        position: relative;
+        font-size: 20px;
+        z-index: 1001;
+    }
+
+    nav ul li a:hover {
+        color: #F5EDF0;
+    }
+
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 1000%;
+        background-color: #D4CBE2;
+        z-index: -1;
+        transition: width 0.5s;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    nav ul li a:hover::after {
+        width: 1000%;
+    }
+
+    .dark-mode nav {
+        background: #D4CBE2;
+    }
+
+    .dark-mode nav ul li a {
+        color: #505D68;
+    }
+
+    .dark-mode nav ul li a:hover {
+        color: #fff;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 40%;
+        z-index: 1002;
+    }
+
+    #hamburger-logo {
+        cursor: pointer;
+        background: #D4CBE2;
+        width: 200px;
+        display: block;
+        color: #505D68;
+        text-align: right;
+        transform: translateX(-168px);
+        padding: 10px;
+        transition: 0.7s;
+    }
+
+    #menu-toggle:checked ~ #hamburger-logo,
+    #menu-toggle:checked ~ nav {
+        transform: translate(0);
+    }
+
+    header form button {
+        display: none;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header form {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .icones {
+        margin-top: 20px;
+    }
+
+    .main {
+        padding-top: 20px;
+    }
+}
+
+
     </style>
 
             <script>
@@ -354,13 +596,28 @@
         <div class="icones">
             <a href="{{ route('profil') }}" class="material-symbols-outlined bulle" aria-label="Profil">account_circle</a>
             <a href="{{ route('panier') }}" class="material-symbols-outlined bulle" aria-label="Panier">shopping_cart</a>
+            <button id="toggle-theme">
+                <span class="material-symbols-outlined day">sunny</span>
+                <span class="material-symbols-outlined night hidden">brightness_2</span>
+            </button>
         </div>
-
-        <button id="toggle-theme">
-            <span class="material-symbols-outlined day">sunny</span>
-            <span class="material-symbols-outlined night hidden">brightness_2</span>
-        </button>
     </header>
+
+    <div class="hamburger-menu">
+        <!-- Assurez-vous que l'input est placé avant le div hamburger-menu -->
+        <input type="checkbox" id="menu-toggle" class="hidden">
+        <!-- Assurez-vous que le label pointe vers l'ID de l'input -->
+        <label for="menu-toggle" class="menu-icon" id="hamburger-logo">&#9776;</label>
+
+        <nav>
+            <ul>
+                <li><a href="{{ route('nouveautes') }}">Nouveautés</a></li>
+                <li><a href="{{ route('promotions') }}">Promotions</a></li>
+                <li><a href="{{ route('produits') }}">Produits</a></li>
+                <li><a href="{{ route('avis') }}">Avis</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <nav>
         <ul>
@@ -371,6 +628,7 @@
         </ul>
     </nav>
 
+
     <div class="main">
     @yield('content')
     </div>
@@ -378,7 +636,5 @@
     <footer>
         <p>&copy; 2024 Les bijoux de la Fée Tochette. Tous droits réservés.</p>
     </footer>
-
-
 </body>
 </html>

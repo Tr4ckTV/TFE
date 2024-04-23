@@ -1,6 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    /* CSS pour la page de création de produit */
+
+/* Titre */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Message de succès */
+.alert-success {
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-check {
+    margin-bottom: 20px;
+}
+
+/* Affichage conditionnel des champs de promotion */
+#discount_fields,
+#discounted_price_field {
+    display: none;
+}
+
+/* Bouton Enregistrer */
+.btn-primary {
+    margin-top: 20px;
+}
+
+</style>
     <div class="container">
         <h2>Créer un nouveau Produit</h2>
         @if(session('success'))

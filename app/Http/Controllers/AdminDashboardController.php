@@ -16,7 +16,7 @@ class AdminDashboardController extends Controller
 
     public function commandeIndex()
     {
-        $commandes = Commande::all();
+        $commandes = Commande::orderBy('created_at', 'desc')->paginate(14);
         return view('admin.commandes', compact('commandes'));
     }
 }
