@@ -25,19 +25,6 @@
         margin-top: 20px;
     }
 
-    /* En-tête du tableau */
-    th {
-        background-color: #f2f2f2;
-        padding: 10px;
-        text-align: left;
-    }
-
-    /* Cellules du tableau */
-    td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-    }
-
     /* Boutons d'action */
     .actions {
         display: flex;
@@ -109,14 +96,19 @@
     </form>
 
     @if(count($cartItems) > 0)
+    @php
+    $total = 0; // Initialiser le total à zéro
+    @endphp
     <table class="table">
         <thead>
             <tr>
                 <th>Produit</th>
                 <th>Prix</th>
                 <th>Quantité</th>
+                <th>Promotion</th>
+                <th>Prix (après promotion)</th>
                 <th>Total</th>
-                <th>Action</th>
+                <th>Mise à jour quantité</th>
             </tr>
         </thead>
         <tbody>
@@ -125,7 +117,26 @@
                 <td>{{ $item->product->name }}</td>
                 <td>{{ $item->product->price }}</td>
                 <td>{{ $item->quantity }}</td>
-                <td>{{ $item->quantity * $item->product->price }}</td>
+                @php
+                $price = $item->product->is_promotion ? $item->product->discounted_price : $item->product->price;
+                $total += $price * $item->quantity; // Calculer le total en prenant en compte le prix réduit
+                @endphp
+                @if($item->product->is_promotion)
+                <td>
+                    <span>Promotion: {{ $item->product->discount_percentage }}% de réduction</span>
+                </td>
+                <td>
+                    <span>{{ $item->product->discounted_price }} €</span>
+                </td>
+                @else
+                <td>
+                    <span>/</span>
+                </td>
+                <td>
+                    <span>/</span>
+                </td>
+                @endif
+                <td>{{ $price * $item->quantity }}</td>
                 <td>
                     <form action="{{ route('panier.update', $item->id) }}" method="post">
                         @csrf
@@ -142,6 +153,13 @@
             </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td>Total: {{ $total }} €</td>
+                <td></td>
+            </tr>
+        </tfoot>
     </table>
     <a href="{{ route('commandes') }}" aria-label="Commandes">Voir mes commandes précédentes</a>
     @else
@@ -149,4 +167,5 @@
     <a href="{{ route('commandes') }}" aria-label="Commandes">Voir mes commandes précédentes</a>
     @endif
 </div>
+
 @endsection

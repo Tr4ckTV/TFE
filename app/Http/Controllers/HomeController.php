@@ -18,21 +18,47 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function nouveautes()
+    public function nouveautes(Request $request)
     {
         // Récupérer la date du premier jour du mois actuel
-    $startDate = Carbon::now()->startOfMonth();
+        $startDate = Carbon::now()->startOfMonth();
 
-    // Récupérer les produits mis en ligne ce mois-ci
-    $newProducts = Product::where('created_at', '>=', $startDate)->get();
+        // Créer la requête pour récupérer les produits mis en ligne ce mois-ci
+        $query = Product::where('created_at', '>=', $startDate);
 
-    return view('nouveautes', compact('newProducts'));
+
+        if ($request->has('category')) {
+            $categoryId = $request->input('category');
+            $query->whereHas('categories', function ($query) use ($categoryId) {
+                $query->where('categories.id', $categoryId); // Spécifiez la table 'categories'
+            });
+        }
+
+        // Paginer les résultats
+        $newProducts = $query->paginate(12);
+
+        // Récupérer toutes les catégories
+        $categories = Category::all();
+
+        return view('nouveautes', compact('newProducts', 'categories'));
     }
 
-    public function promotions()
+    public function promotions(Request $request)
     {
-        $promotedProducts = Product::where('is_promotion', true)->get();
-        return view('promotions', ['promotedProducts' => $promotedProducts]);
+        $query = Product::where('is_promotion', true);
+
+        // Filtrage par catégorie si une catégorie est sélectionnée
+        if ($request->has('category')) {
+            $categoryId = $request->input('category');
+            $query->whereHas('categories', function ($query) use ($categoryId) {
+                $query->where('categories.id', $categoryId); // Spécifiez la table 'categories'
+            });
+        }
+
+        $promotedProducts = $query->paginate(8);
+        $categories = Category::all();
+
+        return view('promotions', compact('promotedProducts', 'categories'));
     }
 
     public function produits(Request $request)
@@ -79,8 +105,11 @@ class HomeController extends Controller
 
     public function panier()
     {
+
         $cartItems = Panier::all();
-        return view('panier', compact('cartItems'));
+        // Supposons que vous ayez besoin d'une variable $product ici pour une raison quelconque
+        $product = Product::first(); // C'est juste un exemple, vous devez obtenir vos données de produit d'une manière qui convient à votre application
+        return view('panier', compact('cartItems', 'product')); // Passer $product à la vue
     }
 
     public function recherche(Request $request)

@@ -23,19 +23,6 @@
         margin-top: 20px;
     }
 
-    /* En-tête du tableau */
-    th {
-        background-color: #f2f2f2;
-        padding: 10px;
-        text-align: left;
-    }
-
-    /* Cellules du tableau */
-    td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-    }
-
     /* Actions des produits */
     .actions {
         display: flex;
@@ -60,6 +47,7 @@
         padding: 5px 10px;
         border-radius: 5px;
         text-decoration: none;
+        cursor: pointer;
     }
 
     /* Pagination */
@@ -107,6 +95,8 @@
                         <th>Nom</th>
                         <th>Description</th>
                         <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Promotion</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -116,6 +106,8 @@
                             <td>{{ $product->name }}</td>
                             <td class="description">{{ $product->description }}</td>
                             <td>{{ $product->price }} €</td>
+                            <td>{{ $product->quantity }}</td>
+                            <td>{{ $product->is_promotion ? 'Oui' : 'Non' }}</td>
                             <td>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Modifier</a>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">

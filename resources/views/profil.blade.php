@@ -112,7 +112,7 @@ main a:hover {
         @if(Auth::user()->type_membre_id == 1) <!-- Vérifie si l'utilisateur est administrateur -->
             <!-- Affiche des liens vers les sections administratives -->
             <p><a href="{{ route('admin.dashboard') }}" class="rouge">Liste des utilisateurs</a></p>
-            <p><a href="{{ route('products.index') }}" class="rouge">Gestion des produits</a></p>
+            <p><a href="{{ route('admin.products.index') }}" class="rouge">Gestion des produits</a></p>
             <p><a href="{{ route('admin.commandes') }}" class="rouge">Commandes</a></p>
             <!-- Ajoutez d'autres liens vers les sections administratives au besoin -->
         @endif

@@ -88,46 +88,57 @@ public function store(Request $request)
 
     // Mettre à jour un produit existant
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,id',
-            'is_promotion' => 'boolean',
-            'discount_percentage' => 'nullable|numeric|min:0|max:100',
-            'discounted_price' => 'nullable|numeric',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'quantity' => 'required|integer',
+        'categories' => 'required|array',
+        'categories.*' => 'exists:categories,id',
+        'is_promotion' => 'nullable|in:on,null',
+        'discount_percentage' => 'nullable|numeric|min:0|max:100',
+        'discounted_price' => 'nullable|numeric',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
+    ]);
 
-        $product = Product::findOrFail($id);
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->categories()->sync($request->categories);
-        $product->is_promotion = $request->has('is_promotion');
-        $product->discount_percentage = $request->input('is_promotion') ? $request->discount_percentage : null;
-        $product->discounted_price = $request->input('is_promotion') ? $request->discounted_price : null;
+    $product = Product::findOrFail($id);
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->price = $request->price;
+    $product->quantity = $request->quantity;
+    $product->categories()->sync($request->categories);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-            $product->image = $imagePath;
-        }
+    // Vérifiez si la promotion est activée
+    $product->is_promotion = $request->has('is_promotion');
 
-        $product->save();
-
-        return redirect()->route('products.index')->with('success', 'Le produit a été mis à jour avec succès.');
+    // Si la promotion est activée, mettez à jour les informations sur la promotion
+    if ($product->is_promotion) {
+        $product->discount_percentage = $request->discount_percentage;
+        $product->discounted_price = $request->discounted_price;
+    } else {
+        // Sinon, réinitialisez les informations sur la promotion
+        $product->discount_percentage = null;
+        $product->discounted_price = null;
     }
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('products', 'public');
+        $product->image = $imagePath;
+    }
+
+    $product->save();
+
+    return redirect()->route('admin.products.index')->with('success', 'Le produit a été mis à jour avec succès.');
+}
+
 
     // Supprimer un produit existant
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Produit supprimé avec succès.');
+        return redirect()->route('admin.products.index')->with('success', 'Produit supprimé avec succès.');
     }
 
 

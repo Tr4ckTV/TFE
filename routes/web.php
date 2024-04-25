@@ -70,7 +70,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
     Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');

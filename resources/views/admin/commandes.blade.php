@@ -17,19 +17,6 @@ h1 {
     margin-top: 20px;
 }
 
-/* En-tête du tableau */
-th {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: left;
-}
-
-/* Cellules du tableau */
-td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
 /* Boutons d'action */
 .actions {
     display: flex;
@@ -76,7 +63,7 @@ td {
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>N°</th>
                     <th>Utilisateur</th>
                     <th>Date</th>
                     <th>Statut</th>
@@ -94,6 +81,11 @@ td {
                             @if($commande->status === 'en attente')
                                 <form action="{{ route('commandes.validate', $commande->id) }}" method="post">
                                     @csrf
+                                    @foreach($commande->items as $item)
+                                    @if($item->product->quantity < $item->quantity)
+                                        <p>Un/des produit(s) {{ $item->product->name }} est/sont en rupture de stock.</p>
+                                    @endif
+                                @endforeach
                                     <button type="submit" class="btn btn-success">Valider</button>
                                 </form>
                                 <form action="{{ route('commandes.reject', $commande->id) }}" method="post">

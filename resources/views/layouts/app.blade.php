@@ -309,6 +309,39 @@
         position: fixed;
         }
 
+        th
+        {
+            background: rgb(253, 141, 141);
+            padding: 10px;
+        }
+
+        td
+        {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .dark-mode th
+        {
+            background: rgb(116, 116, 116);
+            padding: 10px;
+        }
+
+        .dark-mode td
+        {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .highlight {
+    background-color: #ffffcc; /* Couleur de mise en évidence */
+    padding: 10px; /* Espacement intérieur */
+    color: #000;
+    width: 80%;
+    margin: auto;
+}
+
         /* Pour les écrans de taille moyenne comme les tablettes */
         @media screen and (max-width: 1024px) {
 
@@ -631,6 +664,10 @@
 
     <div class="main">
     @yield('content')
+    </div>
+
+    <div class="highlight">
+        <p>Même si un produit est en rupture de stock, vous pouvez me contacter, je peux faire des bijoux à la demande pour de petites sommes. Pour me contacter : <b>061 61 59 19</b>, ou envoyer un message sur messenger à <a href="https://www.facebook.com/elodie.toche">https://www.facebook.com/elodie.toche</a>.</p>
     </div>
 
     <footer>

@@ -14,10 +14,16 @@ h2 {
 }
 
 .avis {
-    border: 1px solid #ddd; /* Bordure autour de chaque avis */
+    border: 3px solid #ddd; /* Bordure autour de chaque avis */
     padding: 15px; /* Espacement intérieur de chaque avis */
     margin-bottom: 20px; /* Espacement entre les avis */
     border-radius: 5px; /* Bordure arrondie */
+    background-color: #D4CBE2;
+    word-wrap: break-word;
+}
+
+.dark-mode .avis {
+    background-color: transparent;
 }
 
 .avis p {

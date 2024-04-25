@@ -25,6 +25,11 @@ textarea {
     resize: vertical; /* Autoriser le redimensionnement vertical du champ de texte */
 }
 
+textarea {
+    resize: vertical; /* Autoriser le redimensionnement vertical du champ de texte */
+    width: 100%; /* Définir la largeur de la zone de texte à 100% */
+}
+
 .btn-primary {
     background-color: #007bff; /* Couleur de fond du bouton */
     color: #fff; /* Couleur du texte du bouton */

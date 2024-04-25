@@ -15,10 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-
-        // Créer 10 utilisateurs fictifs
-        for ($i = 0; $i < 10; $i++) {
             DB::table('users')->insert([
                 'name' => 'Administrateur',
                 'email' => 'Elodie.toche@gmail.com',
@@ -27,7 +23,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
                 'type_membre_id' => 1,
             ]);
-        }
     }
 }
 

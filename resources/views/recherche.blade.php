@@ -22,16 +22,6 @@
         border-collapse: collapse;
     }
 
-    th, td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-    }
-
-    th {
-        background-color: #f2f2f2;
-    }
-
     .product-link {
         color: #007bff;
         text-decoration: none;

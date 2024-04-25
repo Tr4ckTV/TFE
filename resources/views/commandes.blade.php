@@ -22,16 +22,6 @@ h1 {
     margin-top: 20px; /* Espacement en haut du tableau */
 }
 
-th, td {
-    padding: 10px; /* Espacement interne des cellules */
-    border-bottom: 1px solid #ddd; /* Bordure inférieure des cellules */
-    text-align: left; /* Alignement du texte à gauche */
-}
-
-th {
-    background-color: #f2f2f2; /* Couleur de fond de l'en-tête */
-}
-
 .btn-primary {
     background-color: #007bff; /* Couleur de fond du bouton */
     color: #fff; /* Couleur du texte du bouton */
@@ -72,7 +62,7 @@ th {
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>N°</th>
                 <th>Date</th>
                 <th>Statut</th>
                 <th>Actions</th>
