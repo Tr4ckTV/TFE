@@ -94,7 +94,9 @@ class HomeController extends Controller
     public function panier()
     {
 
-        $cartItems = Panier::all();
+        $userId = Auth::id();
+
+        $cartItems = Panier::where('user_id', $userId)->get();
         $product = Product::first();
         return view('panier', compact('cartItems', 'product'));
     }
