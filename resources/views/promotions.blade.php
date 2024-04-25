@@ -2,23 +2,22 @@
 
 @section('content')
 <style>
-    /* Styles pour les promotions */
     .product-list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Augmenter la taille des cartes */
-        grid-gap: 20px; /* Espacement entre les produits */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
     }
 
     .product {
-    border: 3px solid #ddd; /* Bordure autour de chaque produit */
+    border: 3px solid #ddd;
     border-radius: 10px;
-    overflow: hidden; /* Masquer le débordement du contenu */
-    transition: transform 0.3s; /* Effet de transition au survol */
+    overflow: hidden;
+    transition: transform 0.3s;
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer les éléments horizontalement */
+    align-items: center;
     background-color: #D4CBE2
 }
 
@@ -28,14 +27,14 @@
     }
 
     .product:hover {
-        transform: translateY(-5px); /* Animation de translation vers le haut au survol */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une ombre au survol */
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .product img {
     height: 200px;
-    width: 70%; /* Pour s'assurer que l'image occupe toute la largeur */
-    object-fit: cover; /* Redimensionner l'image pour qu'elle remplisse complètement le conteneur */
+    width: 70%;
+    object-fit: cover;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -107,32 +106,32 @@
 }
 
     .product .btn-primary:hover {
-        background-color: #0056b3; /* Couleur de fond du bouton au survol */
+        background-color: #0056b3;
     }
 
     .product .btn-primary:focus {
-        outline: none; /* Supprimer le contour sur le focus */
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
     }
 
     .filter-form {
     display: flex;
-    justify-content: flex-end; /* Aligner le formulaire à droite */
+    justify-content: flex-end;
     align-items: center;
 }
 
 .filter-form .form-group {
-    margin-bottom: 0; /* Supprimer l'espacement sous le champ de filtrage */
+    margin-bottom: 0;
 }
 
 .filter-form .form-control {
-    width: auto; /* Largeur automatique pour le champ de filtrage */
-    margin-right: 10px; /* Espacement entre le champ de filtrage et le bouton */
+    width: auto;
+    margin-right: 10px;
 }
 
 .filter-form .btn-reset {
-    background-color: #dc3545; /* Couleur de fond pour le bouton de réinitialisation */
-    color: #fff; /* Couleur du texte pour le bouton de réinitialisation */
+    background-color: #dc3545;
+    color: #fff;
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
@@ -141,12 +140,12 @@
 }
 
 .filter-form .btn-reset:hover {
-    background-color: #c82333; /* Couleur de fond du bouton de réinitialisation au survol */
+    background-color: #c82333;
 }
 
 .filter-form .btn-reset:focus {
-    outline: none; /* Supprimer le contour sur le focus */
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); /* Ombre autour du bouton de réinitialisation lorsqu'il est en focus */
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }
 </style>
 

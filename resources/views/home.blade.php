@@ -16,8 +16,8 @@ main div {
 
 main p {
     font-weight: bold;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5); /* Ombre du texte */
-    transform: skewX(-10deg); /* Inclinaison vers la gauche */
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5); 
+    transform: skewX(-10deg);
     font-size: 30px;
 }
     </style>

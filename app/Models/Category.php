@@ -8,7 +8,6 @@ class Category extends Model
 {
     protected $fillable = ['name'];
 
-    // Relation avec les produits
     public function products()
     {
         return $this->belongsToMany(Product::class);

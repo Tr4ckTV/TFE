@@ -3,7 +3,6 @@
 @section('content')
 
 <style>
-/* En-tête */
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -33,7 +32,6 @@ main a:hover {
     background-color: #C5B3CE;
 }
 
-/* Ajout d'une barre entre les catégories */
 .main-category {
     border-bottom: 1px solid #D4CBE2;
     margin-bottom: 10px;
@@ -101,20 +99,17 @@ main a:hover {
 
 <main class="box">
     <div class="box-inner">
-    @if(Auth::check()) <!-- Vérifie si l'utilisateur est connecté -->
+    @if(Auth::check())
         <h1>Bienvenue sur votre profil</h1>
-        <!-- Contenu du profil -->
         <p>Nom d'utilisateur: {{ Auth::user()->name }}</p>
         <p>Email: {{ Auth::user()->email }}</p>
         <a href="{{ route('logout') }}" class="bleu">Déconnexion</a>
         <a href="{{ route('users.edit', Auth::user()) }}" class="bleu">Modifier mon profil</a>
 
-        @if(Auth::user()->type_membre_id == 1) <!-- Vérifie si l'utilisateur est administrateur -->
-            <!-- Affiche des liens vers les sections administratives -->
+        @if(Auth::user()->type_membre_id == 1)
             <p><a href="{{ route('admin.dashboard') }}" class="rouge">Liste des utilisateurs</a></p>
             <p><a href="{{ route('admin.products.index') }}" class="rouge">Gestion des produits</a></p>
             <p><a href="{{ route('admin.commandes') }}" class="rouge">Commandes</a></p>
-            <!-- Ajoutez d'autres liens vers les sections administratives au besoin -->
         @endif
 
     @endif

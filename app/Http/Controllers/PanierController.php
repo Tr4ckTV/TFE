@@ -17,11 +17,9 @@ class PanierController extends Controller
         $cartItem = Panier::where('user_id', $user->id)->where('product_id', $product->id)->first();
 
         if ($cartItem) {
-            // Si le produit est déjà dans le panier, augmentez simplement la quantité
             $cartItem->quantity += 1;
             $cartItem->save();
         } else {
-            // Sinon, créez un nouvel élément dans le panier
             Panier::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,

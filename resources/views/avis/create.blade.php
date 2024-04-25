@@ -1,50 +1,50 @@
 @extends('layouts.app')
 
 <style>
-/* Styles pour la page "Laissez votre avis" */
+
 .container {
-    max-width: 600px; /* Largeur maximale du conteneur pour limiter la largeur du formulaire */
-    margin: auto; /* Centrer le formulaire horizontalement */
-    padding: 20px; /* Espacement intérieur du conteneur */
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
 }
 
 h2 {
-    font-size: 24px; /* Taille de police pour le titre */
-    margin-bottom: 20px; /* Espacement en bas du titre */
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px; /* Espacement entre les groupes de champs */
+    margin-bottom: 20px;
 }
 
 label {
-    font-weight: bold; /* Texte du libellé en gras */
+    font-weight: bold;
 }
 
 textarea {
-    resize: vertical; /* Autoriser le redimensionnement vertical du champ de texte */
+    resize: vertical;
 }
 
 textarea {
-    resize: vertical; /* Autoriser le redimensionnement vertical du champ de texte */
-    width: 100%; /* Définir la largeur de la zone de texte à 100% */
+    resize: vertical;
+    width: 100%;
 }
 
 .btn-primary {
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
-    border: none; /* Supprimer la bordure du bouton */
-    padding: 10px 20px; /* Espacement intérieur du bouton */
-    border-radius: 5px; /* Bordure arrondie du bouton */
-    cursor: pointer; /* Curseur de souris en pointeur */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    background-color: #0056b3;
 }
 
 .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 </style>

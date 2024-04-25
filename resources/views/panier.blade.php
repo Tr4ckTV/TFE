@@ -3,36 +3,33 @@
 @section('content')
 
 <style>
-    /* CSS pour la liste des commandes */
-
-    /* Titre */
     h1 {
         font-size: 24px;
         margin-bottom: 20px;
         text-align: center;
     }
 
-    /* Container */
+
     .container {
         margin: 0 auto;
         max-width: 800px;
     }
 
-    /* Tableau */
+
     .table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
 
-    /* Boutons d'action */
+
     .actions {
         display: flex;
         gap: 10px;
         justify-content: center;
     }
 
-    /* Bouton Valider */
+
     .btn-success {
         background-color: #28a745;
         color: #fff;
@@ -46,7 +43,7 @@
         margin-bottom: 20px;
     }
 
-    /* Bouton Refuser */
+
     .btn-danger {
         background-color: #dc3545;
         color: #fff;
@@ -61,7 +58,7 @@
         margin-bottom: 20px;
     }
 
-    /* Bouton Voir en détail */
+
     .btn-primary {
         background-color: #007bff;
         color: #fff;
@@ -71,14 +68,14 @@
         text-decoration: none;
     }
 
-    /* Message d'erreur */
+
     .error-message {
         color: #dc3545;
         margin-top: 10px;
         text-align: center;
     }
 
-    /* Liens */
+
     a {
         display: block;
         margin-top: 20px;
@@ -87,21 +84,21 @@
         text-decoration: none;
     }
 
-    /* Style pour la colonne "Mise à jour quantité" */
+
 td.update-quantity {
     text-align: center;
 }
 
-/* Style pour le champ de quantité */
+
 td.update-quantity input[type="number"] {
-    width: 60px; /* Ajustez la largeur selon vos préférences */
+    width: 60px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
 }
 
-/* Style pour les boutons "Mettre à jour" et "Supprimer" */
+
 td.update-quantity form {
     display: flex;
     flex-direction: column;
@@ -137,7 +134,7 @@ td.update-quantity form button.btn-danger {
 
     @if(count($cartItems) > 0)
     @php
-    $total = 0; // Initialiser le total à zéro
+    $total = 0;
     @endphp
     <table class="table">
         <thead>
@@ -159,7 +156,7 @@ td.update-quantity form button.btn-danger {
                 <td>{{ $item->quantity }}</td>
                 @php
                 $price = $item->product->is_promotion ? $item->product->discounted_price : $item->product->price;
-                $total += $price * $item->quantity; // Calculer le total en prenant en compte le prix réduit
+                $total += $price * $item->quantity;
                 @endphp
                 @if($item->product->is_promotion)
                 <td>

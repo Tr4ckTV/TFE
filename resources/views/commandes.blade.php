@@ -3,49 +3,49 @@
 @section('content')
 
 <style>
-/* CSS pour la liste des commandes */
+
 
 .container {
-    max-width: 800px; /* Largeur maximale du conteneur */
-    margin: auto; /* Centrer le contenu horizontalement */
-    padding: 20px; /* Espacement intérieur du conteneur */
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
 }
 
 h1 {
-    font-size: 24px; /* Taille de police pour le titre */
-    margin-bottom: 20px; /* Espacement en bas du titre */
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .table {
-    width: 100%; /* Largeur totale du tableau */
-    border-collapse: collapse; /* Fusionner les bordures des cellules */
-    margin-top: 20px; /* Espacement en haut du tableau */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 .btn-primary {
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
-    border: none; /* Supprimer la bordure du bouton */
-    padding: 5px 10px; /* Espacement intérieur du bouton */
-    border-radius: 5px; /* Bordure arrondie du bouton */
-    text-decoration: none; /* Supprimer la soulignement du texte */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    background-color: #0056b3;
 }
 
 .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 .highlight {
-    background-color: #ffffcc; /* Couleur de mise en évidence */
-    padding: 10px; /* Espacement intérieur */
+    background-color: #ffffcc;
+    padding: 10px;
 }
 
 .bold {
-    font-weight: bold; /* Mettre en gras */
+    font-weight: bold; 
 }
 
 .dark-mode p

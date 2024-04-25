@@ -13,8 +13,7 @@ class Avis extends Model
     protected $fillable = ['comment'];
 
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
-
+    {
+        return $this->belongsTo(User::class);
+    }
 }

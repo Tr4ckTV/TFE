@@ -2,7 +2,6 @@
 
 @section('content')
 <style>
-    /* Styles pour les résultats de recherche */
     .container {
         margin-top: 20px;
     }

@@ -2,28 +2,23 @@
 
 @section('content')
 <style>
-    /* CSS pour la liste des commandes */
 
-/* Titre */
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Tableau */
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Boutons d'action */
 .actions {
     display: flex;
     gap: 10px;
 }
 
-/* Bouton Valider */
 .btn-success {
     background-color: #28a745;
     color: #fff;
@@ -34,7 +29,6 @@ h1 {
     cursor: pointer;
 }
 
-/* Bouton Refuser */
 .btn-danger {
     background-color: #dc3545;
     color: #fff;
@@ -47,7 +41,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Bouton Voir en détail */
 .btn-primary {
     background-color: #007bff;
     color: #fff;
@@ -83,7 +76,7 @@ h1 {
                                     @csrf
                                     @foreach($commande->items as $item)
                                     @if($item->product->quantity < $item->quantity)
-                                        <p>Un/des produit(s) {{ $item->product->name }} est/sont en rupture de stock.</p>
+                                        <p>Ce produit est en rupture de stock : {{ $item->product->name }}</p>
                                     @endif
                                 @endforeach
                                     <button type="submit" class="btn btn-success">Valider</button>

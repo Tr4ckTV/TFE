@@ -19,13 +19,11 @@ class AvisController extends Controller
             'comment' => 'required|string',
         ]);
 
-        // Récupérer l'ID de l'utilisateur connecté
         $userId = Auth::id();
 
         $avis = new Avis();
         $avis->comment = $request->input('comment');
 
-        // Associer l'ID de l'utilisateur à l'avis
         $avis->user_id = $userId;
 
         $avis->save();

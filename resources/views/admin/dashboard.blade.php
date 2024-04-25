@@ -3,7 +3,6 @@
 @section('content')
 
 <style>
-    /* Styles spécifiques pour la page de liste des utilisateurs */
 .container {
     margin-top: 20px;
 }

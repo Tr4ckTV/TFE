@@ -3,47 +3,47 @@
 @section('content')
 <style>
     .container {
-    max-width: 900px; /* Largeur maximale du conteneur */
-    margin: auto; /* Centrer le contenu horizontalement */
-    padding: 20px; /* Espacement intérieur du conteneur */
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
 h2 {
-    font-size: 24px; /* Taille de police pour le titre */
-    margin-bottom: 20px; /* Espacement en bas du titre */
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .product-details {
-    display: flex; /* Utiliser le modèle de boîte flexible */
-    justify-content: space-between; /* Espacement égal entre les éléments */
-    align-items: center; /* Aligner les éléments verticalement */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .product-details img {
-    max-width: 300px; /* Largeur maximale de l'image */
-    height: auto; /* Hauteur automatique pour préserver les proportions */
+    max-width: 300px;
+    height: auto;
 }
 
 .details {
-    flex: 1; /* Prendre autant d'espace que possible */
-    margin-left: 20px; /* Espacement à gauche */
+    flex: 1;
+    margin-left: 20px;
 }
 
 .details h3 {
-    font-size: 20px; /* Taille de police pour le titre */
-    margin-bottom: 10px; /* Espacement en bas du titre */
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .details p {
-    margin-bottom: 10px; /* Espacement en bas de chaque paragraphe */
+    margin-bottom: 10px;
 }
 
 .details strong {
-    font-weight: bold; /* Mettre en gras le texte fort */
+    font-weight: bold;
 }
 
 .details p:last-child {
-    margin-bottom: 0; /* Supprimer l'espacement en bas du dernier paragraphe */
+    margin-bottom: 0;
 }
 
  .btn-primary {
@@ -58,12 +58,12 @@ h2 {
 }
 
 .btn-primary:hover {
-        background-color: #0056b3; /* Couleur de fond du bouton au survol */
+        background-color: #0056b3;
     }
 
  .btn-primary:focus {
-        outline: none; /* Supprimer le contour sur le focus */
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
     }
 
     .btn-secondary {
@@ -78,12 +78,12 @@ h2 {
 }
 
 .btn-secondary:hover {
-        background-color: #b30000; /* Couleur de fond du bouton au survol */
+        background-color: #b30000;
     }
 
  .btn-secondary:focus {
-        outline: none; /* Supprimer le contour sur le focus */
-        box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
     }
 
 </style>

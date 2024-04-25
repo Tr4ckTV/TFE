@@ -25,34 +25,30 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request)
-{
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    return redirect()->route('home');
-}
+        return redirect()->route('home');
+    }
 
     public function register(Request $request)
     {
-        // Validation des données du formulaire
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Création d'un nouvel utilisateur avec les données validées
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
 
-        // Authentification de l'utilisateur nouvellement créé
         Auth::login($user);
 
-        // Redirection vers la page de profil après inscription réussie
         return redirect()->route('profil');
     }
 }

@@ -77,7 +77,7 @@ main .alert
     <h2>Connexion</h2>
     <form action="{{ route('login') }}" method="POST" class="login-form">
         @csrf
-        <!-- Afficher les erreurs de validation -->
+
         @if ($errors->any())
             <div class="alert">
                 <ul>

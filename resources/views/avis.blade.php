@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 <style>
-    /* Styles pour la liste des avis */
+
 .container {
-    max-width: 800px; /* Largeur maximale du conteneur pour limiter la largeur de la liste des avis */
-    margin: auto; /* Centrer la liste horizontalement */
-    padding: 20px; /* Espacement intérieur du conteneur */
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
 }
 
 h2 {
-    font-size: 24px; /* Taille de police pour le titre */
-    margin-bottom: 20px; /* Espacement en bas du titre */
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .avis {
-    border: 3px solid #ddd; /* Bordure autour de chaque avis */
-    padding: 15px; /* Espacement intérieur de chaque avis */
-    margin-bottom: 20px; /* Espacement entre les avis */
-    border-radius: 5px; /* Bordure arrondie */
+    border: 3px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
     background-color: #D4CBE2;
     word-wrap: break-word;
 }
@@ -27,24 +27,24 @@ h2 {
 }
 
 .avis p {
-    margin-bottom: 10px; /* Espacement entre les paragraphes */
+    margin-bottom: 10px;
 }
 
 .btn-primary {
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
-    border: none; /* Supprimer la bordure du bouton */
-    padding: 10px 20px; /* Espacement intérieur du bouton */
-    border-radius: 5px; /* Bordure arrondie du bouton */
-    text-decoration: none; /* Supprimer la soulignement du texte */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    background-color: #0056b3;
 }
 
 .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Ombre autour du bouton lorsqu'il est en focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 .vide {
@@ -64,7 +64,6 @@ h2 {
             <p class="vide">Aucun avis trouvé.</p>
         @endforelse
 
-        <!-- Bouton pour créer un nouvel avis -->
         <a href="{{ route('avis.create') }}" class="btn btn-primary">Ajouter un avis</a>
     </div>
 @endsection

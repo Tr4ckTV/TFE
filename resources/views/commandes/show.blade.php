@@ -45,8 +45,8 @@ tfoot td {
 }
 
 .highlight {
-    background-color: #ffffcc; /* Couleur de mise en évidence */
-    padding: 10px; /* Espacement intérieur */
+    background-color: #ffffcc;
+    padding: 10px;
     margin-top : 1%
 }
 
@@ -75,7 +75,7 @@ tfoot td {
         </thead>
         <tbody>
             @php
-                $total = 0; // Initialiser le total à zéro
+                $total = 0;
             @endphp
             @foreach($commande->items as $item)
             <tr>
@@ -84,7 +84,7 @@ tfoot td {
                 <td>{{ $item->quantity }}</td>
                 @php
                     $price = $item->product->is_promotion ? $item->product->discounted_price : $item->product->price;
-                    $total += $price * $item->quantity; // Calculer le total en prenant en compte le prix réduit
+                    $total += $price * $item->quantity;
                 @endphp
                 @if($item->product->is_promotion)
                     <td>{{ $item->product->discount_percentage }}% de réduction</td>

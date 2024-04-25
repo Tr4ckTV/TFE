@@ -3,33 +3,27 @@
 @section('content')
 
 <style>
-    /* CSS pour la liste des produits */
 
-    /* Titre */
     h2 {
         font-size: 24px;
         margin-bottom: 20px;
     }
 
-    /* Bouton "Ajouter un Produit" */
     .btn-primary {
         margin-bottom: 20px;
     }
 
-    /* Tableau des produits */
     table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
 
-    /* Actions des produits */
     .actions {
         display: flex;
         gap: 10px;
     }
 
-    /* Bouton Modifier */
     .btn-primary {
         background-color: #007bff;
         color: #fff;
@@ -39,7 +33,6 @@
         text-decoration: none;
     }
 
-    /* Bouton Supprimer */
     .btn-danger {
         background-color: #dc3545;
         color: #fff;
@@ -50,7 +43,6 @@
         cursor: pointer;
     }
 
-    /* Pagination */
     .pagination {
         margin-top: 20px;
         display: flex;
@@ -77,9 +69,9 @@
 
     td.description {
         max-width: 200px;
-        overflow: hidden; /* Masquer le texte qui dépasse */
-        text-overflow: ellipsis; /* Afficher "..." pour indiquer que le texte est coupé */
-        white-space: nowrap; /* Empêcher le texte de passer à la ligne */
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
 </style>

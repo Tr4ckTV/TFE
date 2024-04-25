@@ -4,7 +4,6 @@
 @section('content')
 
 <style>
-    /* CSS pour la page d'inscription */
 main.register-page {
     background-color: #F5EDF0;
     font-family: Arial, sans-serif;
@@ -86,8 +85,7 @@ main .alert
 <main>
     <h2>Inscription</h2>
     <form action="{{ route('register') }}" method="POST" class="register-form">
-        @csrf <!-- Protection CSRF -->
-        <!-- Afficher les erreurs de validation -->
+        @csrf
         @if ($errors->any())
             <div class="alert">
                 <ul>
@@ -108,7 +106,6 @@ main .alert
         <div>
             <label for="password">Mot de passe :</label>
             <input type="password" id="password" name="password" required minlength="8">
-            <!-- Exigence de longueur minimale de 8 caractères -->
         </div>
         <div>
             <label for="password_confirmation">Confirmer le mot de passe :</label>

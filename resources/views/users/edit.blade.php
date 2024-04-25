@@ -3,7 +3,6 @@
 @section('content')
 
 <style>
-    /* Styles pour le formulaire */
 
 form {
     max-width: 70%;

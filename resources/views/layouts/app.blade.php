@@ -333,8 +333,8 @@
         }
 
         .highlight {
-    background-color: #ffffcc; /* Couleur de mise en évidence */
-    padding: 10px; /* Espacement intérieur */
+    background-color: #ffffcc;
+    padding: 10px;
     color: #000;
     width: 80%;
     margin: auto;
@@ -587,7 +587,6 @@
                 <span class="material-symbols-outlined ${isDarkMode ? 'day' : 'night'}">${isDarkMode ? 'sunny' : 'brightness_2'}</span>
                 `;
 
-            // Changer le logo en fonction du thème
             const logo = document.querySelector('header img');
             if (isDarkMode) {
                 logo.src = "{{ asset('image/logob.png') }}";
@@ -609,21 +608,20 @@
 </head>
 <body class="dark-mode">
 
-    <!-- Header -->
     <header>
-        <!-- Logo -->
+
         <div>
         <a href="{{ route('home') }}"><img src="{{ asset('image/logob.png') }}" alt="Logo"></a>
         </div>
 
-        <!-- Barre de recherche -->
+
         <form action="{{ route('recherche') }}" method="GET">
             <input type="text" name="keywords" placeholder="Rechercher...">
             <button type="submit" class="seach"><span class="material-symbols-outlined recherche">search</span></button>
         </form>
 
 
-        <!-- Boutons profil et panier -->
+
         <div class="icones">
             <a href="{{ route('profil') }}" class="material-symbols-outlined bulle" aria-label="Profil">account_circle</a>
             <a href="{{ route('panier') }}" class="material-symbols-outlined bulle" aria-label="Panier">shopping_cart</a>
@@ -635,9 +633,9 @@
     </header>
 
     <div class="hamburger-menu">
-        <!-- Assurez-vous que l'input est placé avant le div hamburger-menu -->
+
         <input type="checkbox" id="menu-toggle" class="hidden">
-        <!-- Assurez-vous que le label pointe vers l'ID de l'input -->
+
         <label for="menu-toggle" class="menu-icon" id="hamburger-logo">&#9776;</label>
 
         <nav>
