@@ -179,8 +179,6 @@
             color: #505D68;
             text-align: center;
             padding: 20px 0;
-            position: relative;
-            z-index: -1;
         }
 
         footer:before {
@@ -672,6 +670,7 @@
 
     <footer>
         <p>&copy; 2024 Les bijoux de la Fée Tochette. Tous droits réservés.</p>
+        <a href="{{ route('mentions') }}">Mentions légales</a>
     </footer>
 </body>
 </html>

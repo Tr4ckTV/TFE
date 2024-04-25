@@ -47,12 +47,12 @@ Route::get('/products', [ProductController::class, 'indexForCustomers'])->name('
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/avis', [HomeController::class, 'avis'])->name('avis');
-Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
+Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create')->middleware('auth');
 Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
 
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil')->middleware('auth');
 
-Route::get('/panier', [HomeController::class, 'panier'])->name('panier');
+Route::get('/panier', [HomeController::class, 'panier'])->name('panier')->middleware('auth');
 Route::get('/recherche', [HomeController::class, 'recherche'])->name('recherche');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -81,11 +81,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/commandes/{commande}/reject', [CommandeController::class, 'refuse'])->name('commandes.reject');
 });
 
-Route::post('/panier/{productId}/add', [PanierController::class, 'addProductToPanier'])->name('panier.add');
-Route::put('/panier/{id}', [PanierController::class, 'update'])->name('panier.update');
-Route::delete('/panier/{id}', [PanierController::class, 'remove'])->name('panier.remove');
+Route::post('/panier/{productId}/add', [PanierController::class, 'addProductToPanier'])->name('panier.add')->middleware('auth');
+Route::put('/panier/{id}', [PanierController::class, 'update'])->name('panier.update')->middleware('auth');
+Route::delete('/panier/{id}', [PanierController::class, 'remove'])->name('panier.remove')->middleware('auth');
 
-Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes');
-Route::post('/commandes', [CommandeController::class, 'store'])->name('commandes.store');
-Route::get('/commandes/{commande}', [CommandeController::class, 'show'])->name('commandes.show');
+Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes')->middleware('auth');
+Route::post('/commandes', [CommandeController::class, 'store'])->name('commandes.store')->middleware('auth');
+Route::get('/commandes/{commande}', [CommandeController::class, 'show'])->name('commandes.show')->middleware('auth');
 
+Route::get('/mentions', function () {
+    return view('infos.mentions');
+})->name('mentions');

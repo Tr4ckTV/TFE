@@ -75,32 +75,50 @@ a.register-link:hover {
     text-decoration: none !important;
 }
 
+main .alert
+{
+    color: red
+}
+
+
 </style>
 
 <main>
-<h2>Inscription</h2>
-<form action="{{ route('register') }}" method="POST" class="register-form">
-    @csrf <!-- Protection CSRF -->
-    <div>
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" value="{{ old('name') }}" required>
-    </div>
-    <div>
-        <label for="email">Adresse email :</label>
-        <input type="email" id="email" name="email" value="{{ old('email') }}" required>
-    </div>
-    <div>
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <label for="password_confirmation">Confirmer le mot de passe :</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required>
-    </div>
-    <button type="submit">S'inscrire</button>
-</form>
+    <h2>Inscription</h2>
+    <form action="{{ route('register') }}" method="POST" class="register-form">
+        @csrf <!-- Protection CSRF -->
+        <!-- Afficher les erreurs de validation -->
+        @if ($errors->any())
+            <div class="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+        </div>
+        <div>
+            <label for="email">Adresse email :</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required minlength="8">
+            <!-- Exigence de longueur minimale de 8 caractères -->
+        </div>
+        <div>
+            <label for="password_confirmation">Confirmer le mot de passe :</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required>
+        </div>
+        <button type="submit">S'inscrire</button>
+    </form>
 
-<a href="{{ route('login') }}" class="register-link">Déjà inscrit ? Connectez-vous ici</a>
+    <a href="{{ route('login') }}" class="register-link">Déjà inscrit ? Connectez-vous ici</a>
 </main>
+
 
 @endsection

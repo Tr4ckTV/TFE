@@ -120,7 +120,7 @@ h2 {
                 </form>
                 @endif
 
-                @if(Auth::user()->type_membre_id == 1)
+                @if(Auth::check() && Auth::user()->type_membre_id == 1)
                     <a href="{{ route('products.edit', $product->id) }}" class="btn btn-secondary">Modifier</a>
                 @endif
 

@@ -66,12 +66,27 @@ a.register-link:hover {
     text-decoration: none !important;
 }
 
+main .alert
+{
+    color: red
+}
+
 </style>
 
 <main>
     <h2>Connexion</h2>
     <form action="{{ route('login') }}" method="POST" class="login-form">
         @csrf
+        <!-- Afficher les erreurs de validation -->
+        @if ($errors->any())
+            <div class="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
             <label for="email">Adresse email :</label>
             <input type="text" id="email" name="email" required>
@@ -86,5 +101,6 @@ a.register-link:hover {
     <a href="{{ route('register') }}" class="register-link">Pas encore inscrit ? Créez un compte ici</a>
 
 </main>
+
 
 @endsection

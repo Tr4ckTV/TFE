@@ -44,7 +44,17 @@ tfoot td {
     font-weight: bold;
 }
 
+.highlight {
+    background-color: #ffffcc; /* Couleur de mise en évidence */
+    padding: 10px; /* Espacement intérieur */
+    margin-top : 1%
+}
+
 </style>
+
+<div class="highlight">
+    <p>Pour finaliser la commande et payer, veuillez appeler le <span class="bold">061 61 59 19</span>, ou envoyer un message sur messenger à <a href="https://www.facebook.com/elodie.toche">https://www.facebook.com/elodie.toche</a>.</p>
+</div>
 
 <div class="container">
     <h1>Détails de la Commande #{{ $commande->id }}</h1>

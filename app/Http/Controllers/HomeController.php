@@ -124,6 +124,4 @@ class HomeController extends Controller
     // Retournez la vue des résultats de la recherche avec les produits trouvés
     return view('recherche', compact('keywords', 'products'));
 }
-
-
 }

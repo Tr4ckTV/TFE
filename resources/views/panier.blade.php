@@ -87,6 +87,46 @@
         text-decoration: none;
     }
 
+    /* Style pour la colonne "Mise à jour quantité" */
+td.update-quantity {
+    text-align: center;
+}
+
+/* Style pour le champ de quantité */
+td.update-quantity input[type="number"] {
+    width: 60px; /* Ajustez la largeur selon vos préférences */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Style pour les boutons "Mettre à jour" et "Supprimer" */
+td.update-quantity form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+td.update-quantity form button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+td.update-quantity form button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+td.update-quantity form button.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+
 </style>
 <div class="container">
     <h1>Votre Panier</h1>
@@ -137,7 +177,7 @@
                 </td>
                 @endif
                 <td>{{ $price * $item->quantity }}</td>
-                <td>
+                <td class="update-quantity">
                     <form action="{{ route('panier.update', $item->id) }}" method="post">
                         @csrf
                         @method('PUT')
