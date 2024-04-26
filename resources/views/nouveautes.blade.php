@@ -34,7 +34,7 @@
 
 .product img {
     height: 200px;
-    width: 100%;
+    width: 70%;
     object-fit: cover;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -147,7 +147,7 @@
 
 .filter-form .btn-reset:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); 
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }
 </style>
 
@@ -171,8 +171,7 @@
     <div class="product-list">
         @foreach ($newProducts->reverse() as $product)
         <a href="{{ route('products.show', $product->id) }}" class="product">
-        <div>
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+            <img src="{{ asset('storagebis/' . $product->image) }}" alt="{{ $product->name }}">
             <div class="details">
                 <span class="title">{{ $product->name }}</span>
                 <p class="price">{{ $product->price }} €</p>
@@ -191,7 +190,6 @@
                 <button type="submit" class="btn-primary">Ajouter au panier</button>
             </form>
         @endif
-        </div>
     </a>
         @endforeach
     </div>
